@@ -4,19 +4,29 @@ usage() {
     printf "Description:\n"
     printf "\tThis script creates a \"tmp\" with 5 directories in it in the home directory, and creates two text files within each subdirectory. The text files contain the first name and last name of the user which are read as arguments.\n\n"
     printf "Usage:\n"
-    printf "\ttask1a.sh [-h] [-cap] --first-name FIRST_NAME --last-name LAST_NAME\n"
+    printf "\ttask1a.sh [OPTION]... --first-name FIRST_NAME --last-name LAST_NAME\n"
     printf "Options:\n"
-    printf "\t-h: Displays this help message and exits.\n"
+    printf "\t-h, --help\tDisplays this help message and exits.\n"
+    printf "\t-c, --capitalize\tDisplays this help message and exits.\n"
     exit 0
 }
 
-while getopts ":h-:" opt; do
+while getopts ":hcap-:" opt; do
     case $opt in
         h)
             usage
             ;;
+        c)
+            cap=1
+            ;;
 		-)
             case "${OPTARG}" in
+                help)
+                    usage
+                    ;;
+                capitalize)
+                    cap=1
+                    ;;
                 first-name)
                     eval arg_first_name=\"\$$OPTIND\"; OPTIND=$(( $OPTIND + 1 ))
                     ;;
@@ -47,6 +57,15 @@ fi
 
 rm -r ~/tmp
 
+if [ $cap = "1" ]; then
+    first_letter=$(echo "$arg_first_name" | cut -c1 | tr '[:lower:]' '[:upper:]')
+    rest_of_string=$(echo "$arg_first_name" | cut -c2-)
+    arg_first_name="${first_letter}${rest_of_string}"
+
+    first_letter=$(echo "$arg_last_name" | cut -c1 | tr '[:lower:]' '[:upper:]')
+    rest_of_string=$(echo "$arg_last_name" | cut -c2-)
+    arg_last_name="${first_letter}${rest_of_string}"
+fi
 
 i=1
 while [ "${i}" -le 5 ]; do
