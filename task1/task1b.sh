@@ -6,7 +6,7 @@ while getopts ":h" opt; do
             printf "Description:\n"
             printf "\tThis script creates a \"tmp\" with 5 directories in it in the home directory, and creates two text files within each subdirectory. The text files contain the first name and last name of the user which are read as environment variables from \$FIRST_NAME and \$LAST_NAME.\n\n"
             printf "Usage:\n"
-            printf "\ttask1a.sh [-h]\n"
+            printf "\ttask1b.sh [-h]\n"
             printf "Options:\n"
             printf "\t-h: Displays this help message and exits.\n"
             exit 0

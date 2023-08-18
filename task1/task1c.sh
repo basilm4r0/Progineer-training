@@ -4,10 +4,10 @@ usage() {
     printf "Description:\n"
     printf "\tThis script creates a \"tmp\" with 5 directories in it in the home directory, and creates two text files within each subdirectory. The text files contain the first name and last name of the user which are read as arguments.\n\n"
     printf "Usage:\n"
-    printf "\ttask1a.sh [OPTION]... --first-name FIRST_NAME --last-name LAST_NAME\n"
+    printf "\ttask1c.sh [OPTION]... --first-name FIRST_NAME --last-name LAST_NAME\n"
     printf "Options:\n"
-    printf "\t-h, --help\tDisplays this help message and exits.\n"
-    printf "\t-c, --capitalize\tDisplays this help message and exits.\n"
+    printf "\t-h, --help\t\tDisplays this help message and exits.\n"
+    printf "\t-c, --capitalize\tCapitalizes the first letter of the first and last names.\n"
     exit 0
 }
 
