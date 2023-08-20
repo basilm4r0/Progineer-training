@@ -11,43 +11,40 @@ usage() {
     exit 0
 }
 
-while getopts ":hcap-:" opt; do
-    case $opt in
-        h)
+cap=0
+
+while [ $# -gt 0 ]; do
+    case $1 in
+        -h)
             usage
             ;;
-        c)
+        -c)
             cap=1
             ;;
-		-)
-            case "${OPTARG}" in
-                help)
-                    usage
-                    ;;
-                capitalize)
-                    cap=1
-                    ;;
-                first-name)
-                    eval arg_first_name=\"\$$OPTIND\"; OPTIND=$(( $OPTIND + 1 ))
-                    ;;
-                last-name)
-                    eval arg_last_name=\"\$$OPTIND\"; OPTIND=$(( $OPTIND + 1 ))
-                    ;;
-				:)
-            		echo "Option -$OPTARG requires an argument." >&2
-					exit 1
-					;;
-                *)
-                    echo "Invalid option: --${OPTARG}" >&2
-                    exit 1
-                    ;;
-            esac
+        --first-name)
+            if [ $# -ge 2 ]; then
+                shift
+                arg_first_name=$1
+            else
+                echo "Option --first-name requires an argument." >&2
+                exit 1
+            fi
             ;;
-        ?)
-            printf "Invalid option: -$OPTARG\n" >&2
+        --last-name)
+            if [ $# -ge 2 ]; then
+                shift
+                arg_last_name=$1
+            else
+                echo "Option --last-name requires an argument." >&2
+                exit 1
+            fi
+            ;;
+        *)
+            echo "Invalid option: $1" >&2
             exit 1
             ;;
     esac
+    shift
 done
 
 if [ -z "${arg_first_name}" ] || [ -z "${arg_last_name}" ]; then
