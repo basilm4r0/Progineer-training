@@ -5,16 +5,15 @@ import sys
 
 
 def usage():
-    print("Description:\n")
+    print("Description:")
     print(
         "\tThis script creates a 'tmp' directory with 5 subdirectories in the "
         + "home directory, and creates two text files within each subdirectory"
-        + "}\n"
+        + ".\n"
     )
-    print("\tand creates two text files within each subdirectory.\n")
-    print("Usage:\n")
-    print("\ttask1a.py [-h]\n")
-    print("Options:\n")
+    print("Usage:")
+    print("\ttask1a.py [-h]")
+    print("Options:")
     print("\t-h: Displays this help message and exits.")
     sys.exit(0)
 
