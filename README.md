@@ -9,3 +9,7 @@
 
 ####    - Part B: the same as the first, except that instead of your first and last name being hard coded, the script should read them from 2 environment variables.
 ####    - Part C: the first and last names should be passed using shell script args. Also add the optional -cap arg. Your script should have a help arg and the user is not required to use a specific order for the args.
+
+
+### 2nd task:
+Implement the scripts described in the first task in python.
