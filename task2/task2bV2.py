@@ -2,31 +2,20 @@
 
 import os
 import sys
-
-
-def usage():
-    print("Description:")
-    print(
-        "\tThis script creates a 'tmp' directory with 5 subdirectories in the"
-        " home directory, and creates two text files within each subdirectory."
-        " The text files contain the first name and last name of the user"
-        " which are read as environment variables from $FIRST_NAME and"
-        " $LAST_NAME.\n"
-    )
-    print("Usage:")
-    print("\ttask1b.py [-h]")
-    print("Options:")
-    print("\t-h: Displays this help message and exits.")
-    sys.exit(0)
+import argparse
 
 
 def main():
-    for arg in sys.argv[1:]:
-        if arg == "-h":
-            usage()
-        else:
-            print("Invalid option:", arg, file=sys.stderr)
-            sys.exit(1)
+    parser = argparse.ArgumentParser(
+        description=(
+            "\tThis script creates a 'tmp' directory with 5 subdirectories in"
+            " the home directory, and creates two text files within each"
+            " subdirectory. The text files contain the first name and last"
+            " name of the user which are read as environment variables from"
+            " $FIRST_NAME and $LAST_NAME.\n"
+        )
+    )
+    parser.parse_args()
 
     first_name = os.environ.get("FIRST_NAME")
     last_name = os.environ.get("LAST_NAME")
